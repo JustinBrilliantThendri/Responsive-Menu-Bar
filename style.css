@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+*{
+    margin : 0;
+    padding : 0;
+    box-sizing : border-box;
+    font-family : "Josefin Sans", sans-serif;
+}
+
+.container{
+    width : 100%;
+    height : 100vh;
+    background : #444444;
+}
+
+.navbar{
+    width : 100%;
+    display : flex;
+    justify-content : space-between;
+    align-items : center;
+    padding : 15px 5%;
+    background : #171717;
+}
+
+.menu-desktop{
+    display : flex;
+    justify-content : space-between;
+    align-items : center;
+    width : 48%;
+    min-width : 550px;
+}
+
+.menu-desktop a{
+    text-decoration : none;
+    color : #EDEDED;
+    font-size : 18px;
+    letter-spacing : 1px;
+    font-weight : bold;
+    position : relative;
+    padding : 0 5px;
+}
+
+.menu-desktop a::before{
+    content : '';
+    width : 100%;
+    height : 4px;
+    background-color : #DA0037;
+    position : absolute;
+    left : 0;
+    bottom : -7px;
+    border-radius : 10px;
+    transform-origin : left;
+    transform : scaleX(0);
+    transition : 0.25s;
+}
+
+.menu-desktop a:hover::before{
+    transform : scaleX(1);
+}
+
+h1{
+    color : #EDEDED;
+    letter-spacing : 1px;
+    font-size : 40px;
+    cursor : pointer;
+}
+
+.red{
+    color : #DA0037;
+}
+
+.ham-menu{
+    width : 60px;
+    height : 60px;
+    border-radius : 5px;
+    padding : 0 7.5px;
+    position : relative;
+    transition : 0.25s;
+    display : none;
+}
+
+.ham-menu input{
+    position : absolute;
+    width : 60px;
+    height : 60px;
+    top : 0;
+    left : 0;
+    z-index : 1;
+    opacity : 0;
+}
+
+.ham-menu span{
+    display : block;
+    margin : 7.5px 0;
+    width : 45px;
+    height : 10px;
+    background : #EDEDED;
+    border-radius : 15px;
+    transition : 0.25s;
+    transform-origin : left center;
+}
+
+.ham-menu:has(input:hover){
+    background : #59CE8F;
+}
+
+.ham-menu:has(input:checked:hover){
+    background : #FF1E00;
+}
+
+.ham-menu input:checked~span:nth-child(2){
+    transform : rotate(38deg);
+    width : 56px;
+}
+
+.ham-menu input:checked~span:nth-child(3){
+    opacity : 0;
+}
+
+.ham-menu input:checked~span:nth-child(4){
+    transform : rotate(-38deg);
+    width : 56px;
+}
+
+.menu-mobile{
+    display : none;
+    flex-direction : column;
+    border-radius : 0 0 10px 10px;
+    overflow : hidden;
+    margin : 0 5%;
+    background : #171717;
+    transform : scaleY(0);
+    transform-origin : center top;
+    transition : 0.25s;
+}
+
+.navbar:has(.ham-menu input:checked)~.menu-mobile{
+    transform : scaleY(1);
+}
+
+.menu-mobile a{
+    text-align : center;
+    text-decoration : none;
+    color : #EDEDED;
+    padding : 15px 0;
+    font-weight : bold;
+    letter-spacing : 1px;
+    position : relative;
+}
+
+.menu-mobile a::before{
+    content : '';
+    position : absolute;
+    height : 100%;
+    width : 100%;
+    top : 0;
+    left : 0;
+    z-index : -1;
+    transform : scaleX(0);
+    transition : 0.25s;
+}
+
+.menu-mobile a:hover::before{
+    background : #DA0037;
+    transform : scaleX(1);
+}
+
+@media screen and (max-width : 900px){
+    .navbar{
+        padding : 5px 5%;
+    }
+    .menu-desktop{
+        display : none;
+    }
+    .ham-menu{
+        display : block;
+    }
+    .menu-mobile{
+        display : flex;
+    }
+}
