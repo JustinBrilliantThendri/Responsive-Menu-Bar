@@ -49,12 +49,13 @@
     left : 0;
     bottom : -7px;
     border-radius : 10px;
-    transform-origin : left;
+    transform-origin : right center;
     transform : scaleX(0);
-    transition : 0.25s;
+    transition : transform 0.25s;
 }
 
 .menu-desktop a:hover::before{
+    transform-origin : left center;
     transform : scaleX(1);
 }
 
